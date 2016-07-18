@@ -12,12 +12,11 @@ using namespace std;
 	- Checks if exist a path from vertex A to B
 	- Detects connected components
 
-	-------------------------------------------------------------------------------
-	Implemented using adjacency list
+	Complexity: O(|V| + |E|)
 	-------------------------------------------------------------------------------
 */
 
-vector<vector<int> > listAdj;
+vector<vector<int> > adjList;
 vector<int> visited;
 
 void dfs(int v)
@@ -27,7 +26,7 @@ void dfs(int v)
 
 	visited[v] = 1;
 
-	for(auto& p : listAdj[v])
+	for(auto& p : adjList[v])
 	{
 		if(visited[p] == 0)
 			dfs(p);
@@ -43,7 +42,7 @@ int main(void)
 	cin >> v >> e;
 
 	visited.resize(v);
-	listAdj.resize(v);
+	adjList.resize(v);
 
 	fill(visited.begin(), visited.end(), 0);
 
@@ -53,8 +52,8 @@ int main(void)
 		int a, b;
 		cin >> a >> b;
 
-		listAdj[a - 1].push_back(b - 1);
-		listAdj[b - 1].push_back(a - 1);
+		adjList[a - 1].push_back(b - 1);
+		adjList[b - 1].push_back(a - 1);
 	}
 
 	dfs(0);
