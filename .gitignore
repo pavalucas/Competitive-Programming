@@ -1,9 +1,19 @@
+# Ignore all
+*
+
+# Unignore all with extensions
+!*.*
+
+# Unignore all dirs
+!*/
+
 # Stuff
 **/*~
 **/.nfs*
 *.swp
 
 # I/O
+*.txt
 *.in
 *.out
 *.err
