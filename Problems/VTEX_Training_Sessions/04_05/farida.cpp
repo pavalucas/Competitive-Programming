@@ -1,54 +1,34 @@
-// URL: https://www.spoj.com/problems/FARIDA/
+#include <iostream>
+#include <vector>
+#include <algorithm>
 
-#include <bits/stdc++.h>
-
-#define mp make_pair
-#define mt make_tuple
-#define fi first
-#define se second
-#define pb push_back
-#define sz(x) int((x).size())
-#define all(x) (x).begin(), (x).end()
-#define rall(x) (x).rbegin(), (x).rend()
-#define rp(i, n) for (int i = 0; i < (int)(n); ++i)
-#define rep(i, x, n) for (int i = (x); i < (int)(n); ++i)
-#define for1(i, n) for (int i = 1; i <= (int)(n); ++i)
-#define ford(i, n) for (int i = (int)(n) - 1; i >= 0; --i)
-#define fore(i, a, b) for (int i = (int)(a); i < (int)(b); ++i)
-
-#define TRACE(x...)
-#define WATCH(x) TRACE( cout << #x" = " << x << endl)
-#define PRINT(x) TRACE(printf(x))
-#define WATCHR(a, b) TRACE( for(auto c = a; c != b;) cout << *(c++) << " "; cout << endl)
-#define WATCHC(V) TRACE({cout << #V" = "; WATCHR(V.begin(), V.end()); } )
-
-using namespace std;
-
-typedef pair<int, int> pii;
-typedef vector<int> vi;
-typedef vector<pii> vpi;
-typedef vector<vi> vvi;
-typedef long long ll;
-typedef unsigned long long ull;
-typedef vector<ll> vll;
-typedef vector<vll> vvll;
-
-int main()
-{
-    ios_base::sync_with_stdio(0);cin.tie(0);
-    int test;
-    cin >> test;
-    for(int t = 1; t <= test; t++) {
-        int n;
-        cin >> n;
-        vector<int> monster(n);
-        vector<int> dp(n);
-        long long resp = 0;
-
-        dp[0] = monster[0];
-        for(int i = 1; i < n; i++) {
-
-        }
+int main() {
+  int test;
+  std::cin >> test;
+  for (int t = 0; t < test; t++) {
+    int n;
+    int64_t ans = 0;
+    std::cin >> n;
+    std::vector<int64_t> monsters(n);
+    std::vector<int64_t> dp(n);
+    if (n == 0) {
+      std::cout << "Case " << t + 1 << ": " << ans << '\n';
+      continue;
     }
-    return 0;
+    for (int i = 0; i < n; i++) {
+      std::cin >> monsters[i];
+    }
+    dp[0] = monsters[0];
+    ans = dp[0];
+
+    for (int i = 1; i < n; i++) {
+      dp[i] = std::max(monsters[i], dp[i-1]);
+      if (i - 2 >= 0) {
+        dp[i] = std::max(dp[i], dp[i-2] + monsters[i]);
+      }
+      ans = std::max(dp[i], ans);
+    }
+    std::cout << "Case " << t + 1 << ": " << ans << '\n';
+  }
+  return 0;
 }
