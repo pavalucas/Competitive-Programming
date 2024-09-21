@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-// from https://github.com/splucs/Competitive-Programming?tab=readme-ov-file
+// from https://github.com/splucs/Competitive-Programming
 
 const int MAXN = 1e5 + 10;
 int tsa [MAXN], c[MAXN], tc[MAXN], head[MAXN];
