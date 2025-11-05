@@ -19,20 +19,15 @@ string query(vector<string>& vq) {
     int sumY = 0;
     for(int i = 0; i < m-1; i++) {
         int len = 0;
-        // cout << text[i] << " ";
         while(i - len >= 0 and len < k and vq[vqSize - len] == text[i - len]) {
             len++;
         }
-        // cout << "len = " << len << endl;
         if(len > best) {
             best = len;
-            // cout << "best = " << best << endl;
             int curId = id[text[i+1]];
             sumX = x[curId];
             sumY = y[curId];
         } else if (len == best) {
-            // cout << "cand = " << text[i+1] << endl;
-            // cout << "curId = " << id[text[i+1]] << endl;
             int curId = id[text[i+1]];
             sumX += x[curId];
             sumY += y[curId];
